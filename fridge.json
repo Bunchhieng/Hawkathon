@@ -1,0 +1,70 @@
+{
+  "Fruits": [{
+    "name": "apple",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2018"
+  }, {
+    "name": "orange",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2017"
+  }, {
+    "name": "strawberry",
+    "added_date": "02/10/2016",
+    "expired_date": "05/25/2017"
+  }, {
+    "name": "banana",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2017"
+  }],
+  "Meat": [{
+    "name": "beef",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2017"
+  }, {
+    "name": "beets",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2017"
+  }, {
+    "name": "fish",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2017"
+  }, {
+    "name": "pork",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2018"
+  }],
+  "Vegetable": [{
+    "name": "cucumber",
+    "added_date": "03/20/2026",
+    "expired_date": "03/20/2020"
+  }, {
+    "name": "kale",
+    "added_date": "03/20/2015",
+    "expired_date": "03/20/2016"
+  }, {
+    "name": "red pepper",
+    "added_date": "03/20/2011",
+    "expired_date": "03/20/2018"
+  }, {
+    "name": "bean sprout",
+    "added_date": "03/20/2019",
+    "expired_date": "03/20/2020"
+  }],
+  "Spice": [{
+    "name": "cajun",
+    "added_date": "03/20/2021",
+    "expired_date": "03/20/2022"
+  }, {
+    "name": "garlic",
+    "added_date": "03/20/2023",
+    "expired_date": "03/20/2025"
+  }, {
+    "name": "chilli",
+    "added_date": "03/20/2034",
+    "expired_date": "03/20/2017"
+  }, {
+    "name": "garlic",
+    "added_date": "03/20/2016",
+    "expired_date": "03/20/2016"
+  }]
+}
