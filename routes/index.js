@@ -7,7 +7,7 @@ var cheerio = require('cheerio');
 var client = new hod.HODClient("9f68afe8-cdd7-43b3-a9e6-bfdb9e1d93bb", "v1");
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  db.Recipes.find().limit(1).exec(function(err, data) {
+  db.Recipes.find({}, {"_id": 0}).limit(1).exec(function(err, data) {
     if (err) console.log(err);
     request(data[0].url, function(error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -16,7 +16,6 @@ router.get('/', function(req, res, next) {
         var allP = $("body p").contents().map(function() {
           return (this.type === 'text') ? $(this).text() : '';
         }).get().join("");
-        // console.log(allP);
         client.call('analyzesentiment', {
           'text': allP
         }, function(err, resp, body) {
@@ -36,4 +35,5 @@ router.get('/', function(req, res, next) {
     });
   });
 });
+
 module.exports = router;

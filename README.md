@@ -27,3 +27,10 @@ We created a web application to display the contents of the fridge and the sugge
 - Framework used to build the REST-based backend
 - Havenondemand machine learning API - sentimental analysis
 - Mongodb - database
+
+### How to use
+- download recipes database https://github.com/fictivekin/openrecipes
+- load recipes to Mongodb: `mongoimport --db test --collection recipes --drop --file recipeitems-latest.json`
+- load fridge data: `mongoimport --db test --collection fridge --drop --file fridge.json`
+- `npm install`
+- `npm run`
