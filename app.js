@@ -23,6 +23,9 @@ var client = new hod.HODClient("9f68afe8-cdd7-43b3-a9e6-bfdb9e1d93bb", "v1");
  * recipes database. Then call the havenondemand API to get the sentiment of each
  * text. Note that, the text is the most important content from `data.url`
  */
+ app.use('api/recipes', function(req, res) {
+
+ })
 db.Fridge.find({}, {
   "_id": 0
 }, function(err, data) {
@@ -35,6 +38,7 @@ db.Fridge.find({}, {
       names.push(d[key][i].name);
     }
   }
+  console.log("|======================================================INVENTORY FOODS======================================================|");
   console.log(names);
   var search = names.join(" ");
   db.Recipes.find({
@@ -45,33 +49,56 @@ db.Fridge.find({}, {
     "score": {
       "$meta": "textScore"
     }
+  }, {
+    _id: 0
   }).sort({
     "score": {
       "$meta": "textScore"
     }
   }).limit(-2).exec(function(err, data) {
+    console.log("|======================================================TOP 2 RECIPES======================================================|");
     console.log(data);
-  });
-});
-db.Recipes.find().limit(1).exec(function(err, data) {
-  if (err) console.log(err);
-  request(data[0].url, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      $ = cheerio.load(body);
-      // http://stackoverflow.com/questions/31543451/cheerio-extract-text-from-html-with-separators
-      var allP = $("body p").contents().map(function() {
-        return (this.type === 'text') ? $(this).text() : '';
-      }).get().join("");
-      // console.log(allP);
-      client.call('analyzesentiment', {
-        'text': allP
-      }, function(err, resp, body) {
-        if (err) console.log(err);
-        console.log(body.aggregate);
+    data.map(function(item) {
+      request(item.url, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+          $ = cheerio.load(body);
+          // http://stackoverflow.com/questions/31543451/cheerio-extract-text-from-html-with-separators
+          var allP = $("body p").contents().map(function() {
+            return (this.type === 'text') ? $(this).text() : '';
+          }).get().join("");
+          // console.log(allP);
+          client.call('analyzesentiment', {
+            'text': allP
+          }, function(err, resp, body) {
+            if (err) console.log(err);
+            console.log("|======================================================SENTIMENTAL ANALYSIS======================================================|");
+            console.log(body.aggregate);
+            console.log("|================================================================================================================================|");
+          });
+        }
       });
-    }
+    });
   });
 });
+// db.Recipes.find().limit(1).exec(function(err, data) {
+//   if (err) console.log(err);
+//   request(data[0].url, function(error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//       $ = cheerio.load(body);
+//       // http://stackoverflow.com/questions/31543451/cheerio-extract-text-from-html-with-separators
+//       var allP = $("body p").contents().map(function() {
+//         return (this.type === 'text') ? $(this).text() : '';
+//       }).get().join("");
+//       // console.log(allP);
+//       client.call('analyzesentiment', {
+//         'text': allP
+//       }, function(err, resp, body) {
+//         if (err) console.log(err);
+//         console.log(body.aggregate);
+//       });
+//     }
+//   });
+// });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -86,8 +113,9 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
+app.use('/moreinfo', moreinfo);
 app.use('/api', function(req, res) {
-  db.Recipes.find().limit(1).exec(function(err, data) {
+  db.Recipes.find().limit(5).exec(function(err, data) {
     if (err) console.log(err);
     request(data[0].url, function(error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -101,7 +129,8 @@ app.use('/api', function(req, res) {
           'text': allP
         }, function(err, resp, body) {
           if (err) console.log(err);
-          res.json(body.aggregate);
+          res.json(data);
+          // res.json(body.aggregate);
           console.log(body.aggregate);
         });
       }
@@ -111,7 +140,6 @@ app.use('/api', function(req, res) {
 });
 app.use('/users', users);
 app.use('/about', about);
-app.use('/moreinfo', moreinfo);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

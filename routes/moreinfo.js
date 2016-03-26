@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('../app_server/models/dbs');
 
-router.get('/name', function(req, res, next) {
-  console.log(req);
+router.get('/:name', function(req, res, next) {
+  var d = req.params.name;
   db.Fridge.find({
     name: d
   }, {
@@ -11,7 +11,7 @@ router.get('/name', function(req, res, next) {
   }, function(err, data) {
     if (err) console.log(err);
     res.render('moreinfo', {
-      data: JSON.parse(JSON.stringify(data[0]))
+      data: data
     });
   });
 });
