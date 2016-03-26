@@ -23,9 +23,9 @@ var client = new hod.HODClient("9f68afe8-cdd7-43b3-a9e6-bfdb9e1d93bb", "v1");
  * recipes database. Then call the havenondemand API to get the sentiment of each
  * text. Note that, the text is the most important content from `data.url`
  */
- app.use('api/recipes', function(req, res) {
+app.use('api/recipes', function(req, res) {
 
- })
+})
 db.Fridge.find({}, {
   "_id": 0
 }, function(err, data) {

@@ -21,7 +21,7 @@ $(document).ready(function() {
     //////////
     $('#dynamic3').html(data[1].name);
     $('#ingredient3').html(data[1].ingredients);
-    $('#my_image3').attr('src', data[1].image);
+    $('#my_image3').attr('src', data[1].image || 'error-404.png');
     $('#description3').html(data[1].description);
     $('#cooktime3').html(data[1].cookTime);
   });
