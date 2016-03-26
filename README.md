@@ -3,7 +3,7 @@ Hawkathon Project
 ** There are 173278 recipes in the database (got it from https://github.com/fictivekin/openrecipes)**
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Hive-Labs/IDHack2016/master/public/images/github.png"/>
+  <img src="https://raw.githubusercontent.com/Bunchhieng/Hawkathon/master/public/images/s1.png"/>
 </p>
 
 ### Objective
