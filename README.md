@@ -6,6 +6,9 @@ Hawkathon Project
   <img src="https://raw.githubusercontent.com/Bunchhieng/Hawkathon/master/public/images/s1.png"/>
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Bunchhieng/Hawkathon/master/public/images/s2.png"/>
+</p>
 ### Objective
 
 How often do we find ourselves constantly checking the fridge to see whats inside? How often do we end up discarding forgotten food from our fridge or
