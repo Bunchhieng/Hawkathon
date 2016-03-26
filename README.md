@@ -22,8 +22,11 @@ We created a web application to display the contents of the fridge and the sugge
 - Mining data against 17328 recipes in the database and recommend the most highest score (createIndexes) based on name textScore
 -  Each recipe come with url to the review and content website. We scrap all the content (except html tag) from the url and feed to the Havenondemand sentimental analysis API. This gives sentiment either `positive` or `negative` and the score is range from 0 to 1.
 
-### Improvement in the future
-- Twilio API to send text when foods is almost expired or amount less than x.
+### Future improvement
+- Twilio API to send text when foods is almost expired or amount less than x days.
+- Smarter machine learning algorithms to learn users cooking pattern
+- Allow users to like/favorite recipes
+- User account
 
 ### Technology
 - Node.js - Evented I/O for the backend
