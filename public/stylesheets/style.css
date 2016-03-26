@@ -7,7 +7,7 @@ body {
   height: 100%;
   font: 14px;
   font-family: "Gotham-Light" !important;
-  background-color: #F0F3F6;
+  background-color: #039BE5;
 }
 a {
   color: #00B7FF;
@@ -255,4 +255,18 @@ ul > li {
   width: calc(100% - 16px) !important;
   bottom: 20px !important;
   padding-bottom: 20px !important;
+}
+/*
+  Change jQuery Tabs color
+*/
+.ui-tabs {
+  background: transparent;
+  border: none;
+}
+.ui-tabs .ui-tabs-nav
+{
+background: #2C3E50;
+}
+.ui-tabs-anchor {
+  background: transparent;
 }

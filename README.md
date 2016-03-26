@@ -1,11 +1,13 @@
 Hawkathon Project
 ===========
-** There are 173278 recipes in the database (got it from https://github.com/fictivekin/openrecipes)**
+** There are 173278 recipes in the database (got it from https://github.com/fictivekin/openrecipes) **
 
+###### Recipes are ranged by score which indicate the most related topic to the foods inventory list.
 <p align="center">
   <img src="https://raw.githubusercontent.com/Bunchhieng/Hawkathon/master/public/images/s1.png"/>
 </p>
 
+###### User interface.
 <p align="center">
   <img src="https://raw.githubusercontent.com/Bunchhieng/Hawkathon/master/public/images/s2.png"/>
 </p>
@@ -20,7 +22,7 @@ We created a web application to display the contents of the fridge and the sugge
 ### High level overview
 - Generate QR code with JSON object that have property `name`, `added_date` and `expired_date`
 - Mining data against 17328 recipes in the database and recommend the most highest score (createIndexes) based on name textScore
--  Each recipe come with url to the review and content website. We scrap all the content (except html tag) from the url and feed to the Havenondemand sentimental analysis API. This gives sentiment either `positive` or `negative` and the score is range from 0 to 1.
+-  Each recipe come with url to the review and content website. We scrap all the content (except html tag) from the url and feed to the Havenondemand sentimental analysis API. This gives sentiment either `positive` or `negative` and the score is range from 0 to 1. The range is then used to generate from 1 to 5 stars as shown in the image above.
 
 ### Future improvement
 - Twilio API to send text when foods is almost expired or amount less than x days.
@@ -30,8 +32,9 @@ We created a web application to display the contents of the fridge and the sugge
 
 ### Technology
 - Node.js - Evented I/O for the backend
-- Framework used to build the REST-based backend
+- Expressjs - Framework used to build the REST-based backend
 - Havenondemand machine learning API - sentimental analysis
+- jQuery - Make life easy
 - Mongodb - database
 
 ### How to use
